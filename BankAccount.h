@@ -28,12 +28,13 @@ public:
 		
 	}
 	~BankAccount() {
-		std::cout << "The bank account was destroyed\n";
-	}
+	
+	}	
 	void deposit(double amount);
 	bool withdraw(double amount);
 	void display() const;
 	int getAccountNumber() const;
+	double getBalance() const;
 };	
 
 #endif

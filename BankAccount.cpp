@@ -31,3 +31,7 @@ void BankAccount::display() const {
 int BankAccount::getAccountNumber() const {
 	return accountNumber;
 }
+
+double BankAccount::getBalance() const {
+        return balance;
+}

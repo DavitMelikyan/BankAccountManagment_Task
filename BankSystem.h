@@ -9,6 +9,8 @@ public:
 	BankAccount* findAccount(int accountNumber);
 	void transferFunds(int senderAcc, int receiverAcc, double amount);
 	void displayAllAccounts() const;
+	void DisplayMenu();
+        void HandleChoice(int choice);
 private:
 	std::vector<BankAccount> database;
 };
