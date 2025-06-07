@@ -1,14 +1,13 @@
 #include "BankSystem.h"
 
 void BankSystem::addAccount(const std::string& name, int accountNumber, double initialBalance) {
-	BankAccount newAccount(name, accountNumber, initialBalance);
-	database.push_back(newAccount);	
+	database.emplace_back(name, accountNumber, initialBalance);	
 }
 
 BankAccount* BankSystem::findAccount(int accountNumber) {
-	for (BankAccount& account : database) {
-		if (account.getAccountNumber() == accountNumber) {
-			return &account;
+	for (int i = 0; i < database.size(); ++i) {
+		if (database[i].getAccountNumber() == accountNumber) {
+			return &database[i];
 		}
 	}
 	std::cout << "Account not found\n";
@@ -32,8 +31,8 @@ void BankSystem::transferFunds(int senderAcc, int receiverAcc, double amount) {
 }
 
 void BankSystem::displayAllAccounts() const {
-	for (const BankAccount& account : database) {
-		account.display();
+	for (int i = 0; i < database.size(); ++i) {
+		database[i].display();
 	}
 }
 
@@ -82,9 +81,9 @@ void BankSystem::HandleChoice(int choice) {
                         std::cout << std::endl;
                         BankAccount* withaccount = findAccount(accountNumber);
                         if (withaccount) {
-                                std::cout << "Enter the sum of deposit: ";
+                                std::cout << "Enter the sum of withdrawal: ";
                                 std::cin >> amount;
-                                withaccount->deposit(amount);
+                                withaccount->withdraw(amount);
                         }
                         break;
 		} case 6: {
