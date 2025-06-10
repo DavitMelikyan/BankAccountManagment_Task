@@ -1,5 +1,13 @@
 #include "BankAccount.h"
 
+BankAccount::BankAccount() : accountHolder{"Unknown"}, accountNumber{0}, balance{0.0} {}
+
+BankAccount::BankAccount(std::string Name, int Number, double initialBalance) : accountHolder{Name}, accountNumber{Number}, balance{initialBalance} {}
+       
+BankAccount::BankAccount(const BankAccount& src) : accountHolder{src.accountHolder}, accountNumber{src.accountNumber}, balance{src.balance} {}
+       
+BankAccount::BankAccount(std::string& Name, int Number) : accountHolder(Name), accountNumber(Number), balance(0.0) {}
+
 void BankAccount::deposit(double amount) {
 	if (amount < 0) {
 		std::cout << "You can't deposit negative amount of money\n";
